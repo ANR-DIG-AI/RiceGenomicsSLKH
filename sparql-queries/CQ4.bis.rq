@@ -1,0 +1,30 @@
+# CQ-4
+PREFIX oa: <http://www.w3.org/ns/oa#>
+PREFIX d2kab: <http://ns.inria.fr/d2kab/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX fabio: <http://purl.org/spar/fabio/>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX frbr: <http://purl.org/vocab/frbr/core#>
+
+SELECT ?GeneName ?LPhenotype ?paper WHERE {
+
+ ?aa1 a oa:Annotation;
+ oa:hasTarget [ oa:hasSource ?source1 ];
+ oa:hasBody [ a d2kab:Gene; skos:prefLabel ?GeneName ] .
+
+ ?source1 frbr:partOf+ ?paper .
+
+ ?aa2 a oa:Annotation;
+ oa:hasTarget [ oa:hasSource ?source2 ] ;
+ oa:hasBody ?Phenotype .
+
+ ?source2 frbr:partOf+ ?paper .
+
+ ?Phenotype a d2kab:Phenotype ; skos:prefLabel ?LPhenotype .
+
+    FILTER CONTAINS(?LPhenotype, "blast disease")
+    
+   ?paper a fabio:ResearchPaper .
+ }
+ GROUP BY ?paper ?GeneName ?Phenotype ?LPhenotype
+ ORDER BY ?Phenotype

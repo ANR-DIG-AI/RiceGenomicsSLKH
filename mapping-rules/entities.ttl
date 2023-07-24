@@ -76,6 +76,24 @@
 			rr:datatype xsd:string;
 		];
 	].
+
+<#Chemical>
+	a rr:TripleMap;
+	rr:logicalTable [ rr:sqlQuery "select * from abstracts where type='Chemical'"; ];
+	
+	rr:subjectMap [ 
+		xrr:reference "URI" ; # id
+		rr:class d2kab:Chemical;
+	];
+	
+	rr:predicateObjectMap [
+		rr:predicate skos:prefLabel;
+		rr:objectMap [
+			rr:template "{Entity}"; # label
+			rr:termType rr:Literal;
+			rr:datatype xsd:string;
+		];
+	].
 	
 # <#Variety>
 # 	a rr:TripleMap;

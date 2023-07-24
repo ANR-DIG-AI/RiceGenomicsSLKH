@@ -1,0 +1,32 @@
+# CQ-2
+PREFIX oa: <http://www.w3.org/ns/oa#>
+PREFIX d2kab: <http://ns.inria.fr/d2kab/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX fabio: <http://purl.org/spar/fabio/>
+PREFIX frbr: <http://purl.org/vocab/frbr/core#>
+
+SELECT ?GeneName (count(distinct ?paper) as ?NbOcc) WHERE {
+
+ ?a1 a oa:Annotation;
+ oa:hasTarget [ oa:hasSource ?source1 ] ;
+ oa:hasBody [ a d2kab:Phenotype; skos:prefLabel "toxicity"] .
+
+ ?source1 frbr:partOf+ ?paper .
+    
+ ?a2 a oa:Annotation;
+ oa:hasTarget [ oa:hasSource ?source2 ] ;
+ oa:hasBody [ a d2kab:Chemical; skos:prefLabel "superoxide"] .
+
+ ?source2 frbr:partOf+ ?paper .
+
+ ?a a oa:Annotation ;
+ oa:hasTarget [ oa:hasSource ?source ] ;
+ oa:hasBody [ a d2kab:Gene; skos:prefLabel ?GeneName ].
+
+ ?source frbr:partOf+ ?paper.
+
+ ?paper a fabio:ResearchPaper.
+ }
+ GROUP BY ?GeneName
+ HAVING (count(distinct ?paper) > 0)
+ ORDER BY DESC(?NbOcc)
