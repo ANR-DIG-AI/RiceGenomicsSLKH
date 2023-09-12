@@ -14,7 +14,9 @@ prefix bibo: <http://purl.org/ontology/bibo/>
 prefix d2kab:   <http://ns.inria.fr/d2kab/> 
 prefix dc: <http://purl.org/dc/terms/> 
 
-SELECT ?GeneName  (count(distinct ?paper) as ?NbOcc) where {
+SELECT ?GeneName  (count(distinct ?paper) as ?NbOcc) 
+FROM <http://ns.inria.fr/d2kab/ricegenomicsslkg>
+where {
 
 ?a1 a oa:Annotation; 
     oa:hasTarget [ oa:hasSource ?source1 ];  

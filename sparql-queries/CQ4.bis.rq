@@ -6,7 +6,10 @@ PREFIX fabio: <http://purl.org/spar/fabio/>
 PREFIX dct: <http://purl.org/dc/terms/>
 PREFIX frbr: <http://purl.org/vocab/frbr/core#>
 
-SELECT ?GeneName ?LPhenotype ?paper WHERE {
+
+SELECT ?GeneName ?LPhenotype ?paper 
+FROM <http://ns.inria.fr/d2kab/ricegenomicsslkg>
+WHERE {
 
  ?aa1 a oa:Annotation;
  oa:hasTarget [ oa:hasSource ?source1 ];

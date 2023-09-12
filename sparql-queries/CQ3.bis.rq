@@ -5,7 +5,9 @@ PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX fabio: <http://purl.org/spar/fabio/>
 PREFIX frbr: <http://purl.org/vocab/frbr/core#>
 
-SELECT ?GeneName (count(distinct ?paper) as ?NbOcc) WHERE {
+SELECT ?GeneName (count(distinct ?paper) as ?NbOcc) 
+FROM <http://ns.inria.fr/d2kab/ricegenomicsslkg>
+WHERE {
 
  ?a1 a oa:Annotation;
  oa:hasTarget [ oa:hasSource ?source1 ] ;
