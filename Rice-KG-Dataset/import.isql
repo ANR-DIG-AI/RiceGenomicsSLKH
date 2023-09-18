@@ -4,10 +4,10 @@ SPARQL CLEAR GRAPH  <http://ns.inria.fr/d2kab/graph/ricegenomicsslkg>;
 
 DELETE FROM DB.DBA.load_list;
 ld_dir ('/dataset/ricegenomicsslkg', '%.ttl', 'http://ns.inria.fr/d2kab/graph/ricegenomicsslkg');
+
 rdf_loader_run();
 checkpoint;
 
 SELECT * FROM DB.DBA.load_list;
 
 exit;
-
