@@ -33,5 +33,5 @@ where {
 ?paper a fabio:ResearchPaper.
 }
 GROUP BY ?GeneName 
-HAVING (count(distinct ?paper) > 1)
+HAVING (count(distinct ?paper) > 0)
 ORDER BY DESC(?NbOcc)

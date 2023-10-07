@@ -11,13 +11,13 @@ WHERE {
 
  ?a1 a oa:Annotation;
  oa:hasTarget [ oa:hasSource ?source1 ] ;
- oa:hasBody [ a d2kab:Phenotype; skos:prefLabel "toxicity"] .
+ oa:hasBody [ a d2kab:Phenotype; skos:prefLabel "toxicity"] . # "EMS"
 
  ?source1 frbr:partOf+ ?paper .
     
  ?a2 a oa:Annotation;
  oa:hasTarget [ oa:hasSource ?source2 ] ;
- oa:hasBody [ a d2kab:Chemical; skos:prefLabel "superoxide"] .
+ oa:hasBody [ a d2kab:Chemical; skos:prefLabel "superoxide"] . # "ethyl methanesulfonate"
 
  ?source2 frbr:partOf+ ?paper .
 
