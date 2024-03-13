@@ -1,0 +1,28 @@
+[
+    {
+        "label": "csv",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "csv",
+        "description": "csv",
+        "detail": "csv",
+        "documentation": {}
+    },
+    {
+        "label": "Graph",
+        "importPath": "rdflib",
+        "description": "rdflib",
+        "isExtraImport": true,
+        "detail": "rdflib",
+        "documentation": {}
+    },
+    {
+        "label": "g",
+        "kind": 5,
+        "importPath": "Hunflair-output.purl_entities_from_rdf",
+        "description": "Hunflair-output.purl_entities_from_rdf",
+        "peekOfCode": "g = Graph()\ng.parse(\"./data/entities.ttl\", format=\"turtle\")\nwith open(\"./resolved_entities.csv\", mode=\"w\", newline=\"\") as csvfile:\n    csv_writer = csv.writer(csvfile)\n    csv_writer.writerow([\"Suject\", \"entity\"])\n    for subj, _, obj in g:\n        if 'purl' in subj and not 'http' in obj :\n            csv_writer.writerow([str(subj), str(obj)])\nprint(\"Conversion ended. The results are saved in the file ./resolved_entities.csv .\")",
+        "detail": "Hunflair-output.purl_entities_from_rdf",
+        "documentation": {}
+    }
+]
