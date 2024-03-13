@@ -26,7 +26,7 @@ WHERE {
     
 ?a a oa:Annotation; 
     oa:hasTarget [ oa:hasSource ?source ];
-    oa:hasBody [a d2kab:Taxon; skos:prefLabel "Burkholderia sp."]. # "Os"
+    oa:hasBody [a d2kab:Taxon; skos:prefLabel "xanthomonas oryzae"]. # "Os"
     
 ?source frbr:partOf+ ?paper.
 
